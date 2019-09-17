@@ -1,6 +1,10 @@
+#define p Serial.print
+#define pln Serial.println
+
 // switch
 const byte PIN_SW1 = 2;
 bool swVal = LOW; // or just 0, it's the same
+bool swValPrevious = LOW;
 const int ccSwNum = 101;
 
 void setup() {
@@ -10,7 +14,8 @@ void setup() {
 
 void loop() {
     swVal = digitalRead(PIN_SW1);
-    if (swVal == HIGH) {
-        Serial.println("button pressed");
+    if (swVal != swValPrevious) {
+        p("Sending out MIDI CC on "); pln(ccSwNum);
     }
+    swValPrevious = swVal;
 }
