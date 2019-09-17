@@ -1,14 +1,16 @@
 // switch
-const int PIN_SW1 = 2;
-bool swVal = false; // or just 0, it's the same
-int ccSwNum = 101;
+const byte PIN_SW1 = 2;
+bool swVal = LOW; // or just 0, it's the same
+const int ccSwNum = 101;
 
 void setup() {
     pinMode(PIN_SW1, INPUT);
+    Serial.begin(9600);
 }
 
 void loop() {
-    if (digitalRead(PIN_SW1) == HIGH) {
+    swVal = digitalRead(PIN_SW1);
+    if (swVal == HIGH) {
         Serial.println("button pressed");
     }
 }
