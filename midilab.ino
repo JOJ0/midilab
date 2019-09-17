@@ -15,7 +15,12 @@ void setup() {
 void loop() {
     swVal = digitalRead(PIN_SW1);
     if (swVal != swValPrevious) {
-        p("Sending out MIDI CC on "); pln(ccSwNum);
+        if (swVal == HIGH) {
+            p("Sending out MIDI CC on "); pln(ccSwNum);
+        }
+        else {
+            p("Sending out MIDI CC off "); pln(ccSwNum);
+        }
     }
     swValPrevious = swVal;
 }
